@@ -6,11 +6,6 @@ import android.util.Log
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.ffmpegCommand
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Duration
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.ChannelType
-import java.time.Instant
-import java.time.ZoneId
-import java.time.temporal.ChronoUnit
-import java.time.temporal.Temporal
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            output = "out.mp3"
+            outputPath = "out.mp3"
         }
 
         Log.d("example", command)

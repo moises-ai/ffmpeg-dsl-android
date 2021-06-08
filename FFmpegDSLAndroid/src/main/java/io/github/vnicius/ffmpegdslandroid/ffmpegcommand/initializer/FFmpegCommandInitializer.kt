@@ -11,7 +11,7 @@ class FFmpegCommandInitializer: CommandInitializer() {
             field = value
             value?.let(::addIsOverrideAllowed)
         }
-    var output: String? = null
+    var outputPath: String? = null
         set(value) {
             field = value
             value?.let(::addOutputPathValue)
