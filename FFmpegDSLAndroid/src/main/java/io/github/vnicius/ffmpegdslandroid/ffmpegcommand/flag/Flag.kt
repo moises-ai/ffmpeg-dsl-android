@@ -1,12 +1,11 @@
-package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter
+package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.flag
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.KeyCommandArgument
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.ValueCommandArgument
 
-abstract class Filter: KeyCommandArgument, ValueCommandArgument, CommandArgumentParser {
+abstract class Flag : KeyCommandArgument, CommandArgumentParser {
     override fun parseToString(): String =
-        "${key.trim()}=${value.trim()}"
+        key.trim()
 
     override fun toString(): String =
         parseToString()

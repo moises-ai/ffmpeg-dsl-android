@@ -1,4 +1,4 @@
-package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument
+package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.flag
 
 class OverrideAllowedFlag(private val isOverrideAllowed: Boolean): Flag() {
     override val key: String

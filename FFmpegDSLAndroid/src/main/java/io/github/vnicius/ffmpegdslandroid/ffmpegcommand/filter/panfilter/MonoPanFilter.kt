@@ -1,6 +1,6 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter
 
-class MonoPanFilter(gains: FloatArray) : PanFilter(ChannelType.Mono, gains) {
+class MonoPanFilter(gains: FloatArray) : PanFilter(ChannelType.Mono) {
     init {
         setupChannels(gains)
     }

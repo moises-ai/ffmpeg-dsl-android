@@ -1,21 +1,16 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command
 
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.Argument
 
-open class CommandBuilder : Argument() {
-    override val key: String = ""
-    override val value: String
-        get() = getArgumentsAsString()
+open class CommandBuilder {
+    private val arguments: MutableList<CommandArgumentParser> = mutableListOf()
 
-    private val arguments: MutableList<Argument> = mutableListOf()
-
-    fun addArgument(argument: Argument): CommandBuilder {
+    fun addArgument(argument: CommandArgumentParser): CommandBuilder {
         arguments.add(argument)
         return this
     }
 
-    private fun getArgumentsAsString(): String =
+    fun build(): String =
         arguments.joinToString(" ") {
-            it.toString()
+            it.parseToString()
         }
 }

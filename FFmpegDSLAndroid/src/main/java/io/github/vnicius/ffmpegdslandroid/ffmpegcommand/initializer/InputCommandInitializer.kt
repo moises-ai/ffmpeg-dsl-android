@@ -22,17 +22,17 @@ class InputCommandInitializer : CommandInitializer() {
         }
 
     private fun addInputArgument(path: String) {
-        arguments.add(InputArgument(path))
+        commandArguments.add(InputArgument(path))
     }
 
     private fun addSeekStartSecondArgument(second: Float) {
-        arguments.add(SeekStartArgument().apply {
+        commandArguments.add(SeekStartArgument().apply {
             setPosition(second)
         })
     }
 
     private fun addTimeSecondArgument(second: Float) {
-        arguments.add(TimeArgument().apply {
+        commandArguments.add(TimeArgument().apply {
             setPosition(second)
         })
     }

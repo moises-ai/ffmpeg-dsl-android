@@ -1,11 +1,11 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.Argument
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
 
 @FFmpegInitializerMarker
 open class CommandInitializer {
-    protected val arguments: MutableList<Argument> = mutableListOf()
+    protected val commandArguments: MutableList<CommandArgumentParser> = mutableListOf()
 
-    fun getArgumentsList(): List<Argument> = arguments
+    fun getArgumentsList(): List<CommandArgumentParser> = commandArguments
 }

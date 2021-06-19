@@ -1,10 +1,15 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument
 
-abstract class Argument {
-    abstract val key: String
-    abstract val value: String
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.KeyCommandArgument
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.ValueCommandArgument
+
+abstract class Argument : KeyCommandArgument, ValueCommandArgument, CommandArgumentParser {
+    override fun parseToString(): String {
+        return "$key $value".trim()
+    }
 
     override fun toString(): String {
-        return "$key $value".trim()
+        return parseToString()
     }
 }

@@ -1,6 +1,6 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter
 
-class StereoPanFilter(gains: FloatArray) : PanFilter(ChannelType.Stereo, gains) {
+class StereoPanFilter(gains: FloatArray) : PanFilter(ChannelType.Stereo) {
     init {
         setupChannelsGain(gains)
     }

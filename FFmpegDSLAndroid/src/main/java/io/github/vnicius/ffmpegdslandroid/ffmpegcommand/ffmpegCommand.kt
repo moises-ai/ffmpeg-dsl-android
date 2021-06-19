@@ -13,5 +13,5 @@ fun ffmpegCommand(initializer: FFmpegCommandInitializer.() -> Unit): String {
         commandBuilder.addArgument(it)
     }
 
-    return commandBuilder.toString()
+    return commandBuilder.build()
 }

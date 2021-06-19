@@ -1,8 +1,8 @@
 package io.github.vnicius.ffmpegdslandroid
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.ffmpegCommand
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Duration
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.ChannelType
@@ -51,6 +51,6 @@ class MainActivity : AppCompatActivity() {
             outputPath = "out.mp3"
         }
 
-        Log.d("example", command)
+        findViewById<TextView>(R.id.text_view).text = command
     }
 }
