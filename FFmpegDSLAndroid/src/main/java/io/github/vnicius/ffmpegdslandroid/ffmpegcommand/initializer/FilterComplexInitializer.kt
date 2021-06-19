@@ -1,10 +1,12 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.FilterComplexArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Filter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.AudioMixFilter
 
+@FFmpegInitializerMarker
 class FilterComplexInitializer {
     val filterComplexArgument: FilterComplexArgument = FilterComplexArgument()
 

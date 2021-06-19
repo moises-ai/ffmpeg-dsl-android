@@ -1,9 +1,11 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.PanFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.PanFilterFactory
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.*
 
+@FFmpegInitializerMarker
 abstract class BaseFiltersInitializer {
     var audioSampleRate: Float? = null
         set(value) {

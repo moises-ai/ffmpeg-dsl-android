@@ -1,11 +1,13 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.DropoutTransitionFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Duration
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.DurationFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.InputsFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.AudioMixFilter
 
+@FFmpegInitializerMarker
 class AudioMixInitializer {
     val audioMixFilter = AudioMixFilter()
     var inputs: Int? = null
