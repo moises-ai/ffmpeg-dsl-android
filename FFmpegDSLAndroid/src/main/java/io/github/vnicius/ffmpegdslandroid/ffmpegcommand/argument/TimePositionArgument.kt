@@ -1,6 +1,5 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument
 
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.Argument
 
 open class TimePositionArgument(override val key: String): Argument() {
     override val value: String

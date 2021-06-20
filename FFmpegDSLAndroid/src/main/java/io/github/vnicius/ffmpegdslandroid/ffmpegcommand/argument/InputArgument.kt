@@ -8,6 +8,6 @@ class InputArgument(path: String): Argument() {
     override val value: String = "\"$path\""
 
     init {
-        PathAssertion().assert(path)
+        PathAssertion.assert(path)
     }
 }

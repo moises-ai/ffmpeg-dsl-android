@@ -6,4 +6,4 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.exception
  * github: @vnicius
  * vinicius.matheus252@gmail.com
  */
-class PathIsBlankException : Exception("The 'path' cannot be blank") {}
+class KeyIsBlankException : Exception("The 'key' cannot be blank")

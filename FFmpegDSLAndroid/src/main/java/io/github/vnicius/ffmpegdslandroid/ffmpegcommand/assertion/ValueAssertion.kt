@@ -1,6 +1,6 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.assertion
 
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.exception.PathIsBlankException
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.exception.ValueIsBlankException
 
 
 /**
@@ -8,8 +8,8 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.exception.PathIsBlankExc
  * github: @vnicius
  * vinicius.matheus252@gmail.com
  */
-object PathAssertion: Assertion<String> {
+object ValueAssertion: Assertion<String> {
     override fun assert(value: String) {
-        if (value.isBlank()) throw PathIsBlankException()
+        if (value.isBlank()) throw ValueIsBlankException()
     }
 }
