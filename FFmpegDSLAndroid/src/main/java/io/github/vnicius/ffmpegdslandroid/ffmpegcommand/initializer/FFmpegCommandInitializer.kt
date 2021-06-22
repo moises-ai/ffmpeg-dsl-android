@@ -1,5 +1,6 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.CodecArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.FilterComplexArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.flag.OverrideAllowedFlag
@@ -41,5 +42,14 @@ class FFmpegCommandInitializer: CommandInitializer() {
         commandArguments.add(filterComplexArgument)
 
         return filterComplexArgument
+    }
+
+    fun codec(initializer: CodecInitializer.() -> Unit): CodecArgument {
+        val codecInitializer = CodecInitializer().apply(initializer)
+        val codecArgument = CodecArgument(codecInitializer.codec, codecInitializer.streamSpecifier)
+
+        commandArguments.add(codecArgument)
+
+        return codecArgument
     }
 }
