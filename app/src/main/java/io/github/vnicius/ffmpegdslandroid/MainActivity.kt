@@ -48,6 +48,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            codec {
+                streamSpecifier = "a:0"
+                codec = "libcodec"
+            }
+
             outputPath = "out.mp3"
         }
 
