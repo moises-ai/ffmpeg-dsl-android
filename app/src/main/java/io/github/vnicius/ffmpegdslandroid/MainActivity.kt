@@ -53,6 +53,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            map = tag("a:3")
+
             outputPath = "out.mp3"
         }
 

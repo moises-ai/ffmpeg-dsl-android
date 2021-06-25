@@ -2,8 +2,10 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.CodecArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.FilterComplexArgument
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.MapArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandBuilder
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterTagGenerator
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.flag.OverrideAllowedFlag
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.value.OutputPathValue
 
@@ -18,6 +20,11 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
             field = value
             value?.let(::addOutputPathValue)
         }
+    var map: String? = null
+        set(value) {
+            field = value
+            value?.let(::addMapArgument)
+        }
 
     private fun addIsOverrideAllowed(isAllowed: Boolean) {
         commandBuilder.addArgument(OverrideAllowedFlag(isAllowed))
@@ -25,6 +32,10 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
 
     private fun addOutputPathValue(path: String) {
         commandBuilder.addArgument(OutputPathValue(path))
+    }
+
+    private fun addMapArgument(streamSpecifier: String) {
+        commandBuilder.addArgument(MapArgument(streamSpecifier))
     }
 
     fun input(initializer: InputCommandInitializer.() -> Unit): List<CommandArgumentParser> {
@@ -57,4 +68,7 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
 
         return codecArgument
     }
+
+    fun tag(streamSpecifier: String): String =
+        FilterTagGenerator().generateTagFromStreamSpecifier(streamSpecifier)
 }
