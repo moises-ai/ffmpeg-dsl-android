@@ -5,7 +5,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.ValueCommandArgu
 
 abstract class Value: ValueCommandArgument, CommandArgumentParser {
     override fun parseToString(): String =
-        value.trim()
+        "\"${value.trim()}\""
 
     override fun toString(): String =
         parseToString()
