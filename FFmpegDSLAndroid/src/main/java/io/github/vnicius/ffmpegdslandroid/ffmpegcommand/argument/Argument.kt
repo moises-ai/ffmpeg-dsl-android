@@ -11,7 +11,7 @@ abstract class Argument : KeyCommandArgument, ValueCommandArgument, CommandArgum
         KeyAssertion.assert(key)
         ValueAssertion.assert(value)
 
-        return "$key $value".trim()
+        return "$key \"$value\"".trim()
     }
 
     override fun toString(): String {
