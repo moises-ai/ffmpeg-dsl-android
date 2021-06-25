@@ -3,8 +3,9 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.InputArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.SeekStartArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.TimeArgument
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
 
-class InputCommandInitializer : CommandInitializer() {
+class InputCommandInitializer(private val destination: MutableList<CommandArgumentParser>) {
     var path: String = ""
         set(value) {
             field = value
@@ -22,17 +23,17 @@ class InputCommandInitializer : CommandInitializer() {
         }
 
     private fun addInputArgument(path: String) {
-        commandArguments.add(InputArgument(path))
+        destination.add(InputArgument(path))
     }
 
     private fun addSeekStartSecondArgument(second: Float) {
-        commandArguments.add(SeekStartArgument().apply {
+        destination.add(SeekStartArgument().apply {
             setPosition(second)
         })
     }
 
     private fun addTimeSecondArgument(second: Float) {
-        commandArguments.add(TimeArgument().apply {
+        destination.add(TimeArgument().apply {
             setPosition(second)
         })
     }

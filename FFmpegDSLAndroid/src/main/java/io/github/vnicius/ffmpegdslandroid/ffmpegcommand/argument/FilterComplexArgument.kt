@@ -12,21 +12,9 @@ class FilterComplexArgument: Argument() {
     private val filters: MutableList<Filter> = mutableListOf()
 
     private fun getFilterGroupsAsString(): String {
-        val groups = filtersGroups.mapIndexed { index, filterGroup ->
-            if (filterGroup.inputTag.isNullOrBlank()) {
-                filterGroup.inputTag = "[$index:a]"
-            }
-
-            if (filterGroup.outputTag.isNullOrBlank()) {
-                filterGroup.outputTag = "[a:$index]"
-            }
-
-            filterGroup.toString()
+        return filtersGroups.joinToString("") { filterGroup ->
+            filterGroup.parseToString()
         }
-        val filtersGroupsConcat = groups.joinToString("")
-        val filtersGroupsTags = filtersGroups.joinToString("") { it.outputTag ?: "" }
-
-        return filtersGroupsConcat + filtersGroupsTags
     }
 
     private fun getFiltersAsString(): String {
@@ -44,4 +32,6 @@ class FilterComplexArgument: Argument() {
     fun addFilter(filter: Filter) {
         filters.add(filter)
     }
+
+    fun getFilterGroups(): List<FilterGroup> = filtersGroups
 }

@@ -2,41 +2,34 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.FilterComplexArgument
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Filter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.AudioMixFilter
 
 @FFmpegInitializerMarker
-class FilterComplexInitializer {
-    val filterComplexArgument: FilterComplexArgument = FilterComplexArgument()
+class FilterComplexInitializer(private val filterComplexArgument: FilterComplexArgument) {
 
     fun filterGroup(
-        inputTag: String? = null,
-        outputTag: String? = null,
+        inputStreamSpecifier: String? = null,
+        outputStreamSpecifier: String? = null,
         initializer: FilterGroupInitializer.() -> Unit
     ): FilterGroup {
-        val filterGroupInitializer = FilterGroupInitializer(inputTag, outputTag).apply(initializer)
-        val filterGroup = filterGroupInitializer.filterGroup
+        val filterGroup = FilterGroup(inputStreamSpecifier, outputStreamSpecifier)
+
+        FilterGroupInitializer(filterGroup).apply(initializer)
 
         filterComplexArgument.addFilterGroup(filterGroup)
 
         return filterGroup
     }
 
-    fun filters(initializer: FiltersInitializer.() -> Unit): List<Filter> {
-        val filterInitializer = FiltersInitializer().apply(initializer)
-        val filters = filterInitializer.filters
+    fun amix(
+        inputsStreamsSpecifiers: List<String>? = null,
+        outputStreamSpecifier: String? = null,
+        initializer: AudioMixInitializer.() -> Unit
+    ): AudioMixFilter {
+        val audioMixFilter = AudioMixFilter(inputsStreamsSpecifiers, outputStreamSpecifier)
 
-        filters.forEach {
-            filterComplexArgument.addFilter(it)
-        }
-
-        return filters
-    }
-
-    fun amix(initializer: AudioMixInitializer.() -> Unit): AudioMixFilter {
-        val audioMixInitializer = AudioMixInitializer().apply(initializer)
-        val audioMixFilter = audioMixInitializer.audioMixFilter
+        AudioMixInitializer(audioMixFilter).apply(initializer)
 
         filterComplexArgument.addFilter(audioMixFilter)
 

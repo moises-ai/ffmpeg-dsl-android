@@ -1,9 +1,9 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.*
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.PanFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.PanFilterFactory
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.*
 
 @FFmpegInitializerMarker
 abstract class BaseFiltersInitializer {
@@ -54,5 +54,5 @@ abstract class BaseFiltersInitializer {
         return panFilter
     }
 
-    abstract fun addFilter(filter: Filter)
+    protected abstract fun addFilter(filter: Filter)
 }

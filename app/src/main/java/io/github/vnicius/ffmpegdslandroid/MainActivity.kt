@@ -1,10 +1,12 @@
 package io.github.vnicius.ffmpegdslandroid
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.ffmpegCommand
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Duration
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.Duration
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.ChannelType
 
 class MainActivity : AppCompatActivity() {
@@ -25,37 +27,37 @@ class MainActivity : AppCompatActivity() {
             }
 
             filterComplex {
-                filterGroup {
+                val filterGroups = mutableListOf<FilterGroup>()
+
+                filterGroup("0:a", "a:0") {
                     volume = 1.2f
                     pan {
                         channelType = ChannelType.Stereo
-                        gains = floatArrayOf(1f, .5f)
+                        gains = floatArrayOf(1f, 0f)
                     }
-                }
+                }.also(filterGroups::add)
 
-                filterGroup {
-                    volume = .5f
+                filterGroup("1:a", "a:1") {
+                    volume = 1.5f
                     pan {
                         channelType = ChannelType.Stereo
-                        gains = floatArrayOf(0f, .2f)
+                        gains = floatArrayOf(0f, 1f)
                     }
-                }
+                }.also(filterGroups::add)
 
-                amix {
+                amix(filterGroups.mapNotNull { it.inputStreamSpecifier }, "a:3") {
                     inputs = 2
                     duration = Duration.Shortest
                     dropoutTransition = 2
+                    volume = 2
                 }
-            }
-
-            codec {
-                streamSpecifier = "a:0"
-                codec = "libcodec"
             }
 
             outputPath = "out.mp3"
         }
 
         findViewById<TextView>(R.id.text_view).text = command
+
+        Log.d("command", command)
     }
 }
