@@ -10,15 +10,13 @@ import org.junit.Test
  * vinicius.matheus252@gmail.com
  */
 class CodecArgumentTest {
-    private val codecKeyPattern = "^(-c|(-codec)):?[^ ]*".toPattern()
-    private val codecArgumentPattern = "^(-c|(-codec)):?[^ ]* [^ ]+".toPattern()
 
     @Test
     fun should_HaveBasicKey_when_StreamSpecifierIsNull() {
         val codecArgument = CodecArgument("libcodec", null)
         val codecKey = codecArgument.key
 
-        assertThat(codecKey).matches(codecKeyPattern)
+        assertThat(codecKey).matches("-c")
     }
 
     @Test
@@ -26,17 +24,16 @@ class CodecArgumentTest {
         val codecArgument = CodecArgument("libcodec", "")
         val codecKey = codecArgument.key
 
-        assertThat(codecKey).matches(codecKeyPattern)
+        assertThat(codecKey).matches("-c")
     }
 
     @Test
     fun should_ContainsStreamSpecifierAtTheEndOfTheKey_when_StreamSpecifierIsNotBlank() {
-        val streamSpecifier = "a:1"
-        val codecArgument = CodecArgument("libcodec", streamSpecifier)
+        val codecArgument = CodecArgument("libcodec", "a:1")
+
         val codecKey = codecArgument.key
 
-        assertThat(codecKey).matches(codecKeyPattern)
-        assertThat(codecKey).endsWith(streamSpecifier)
+        assertThat(codecKey).endsWith("-c:a:1")
     }
 
     @Test(expected = CodecNotSupportedException::class)
@@ -45,10 +42,11 @@ class CodecArgumentTest {
     }
 
     @Test
-    fun should_MatchesCodecArgumentPattern_when_CodecAndStreamSpecifierAreNotBlank() {
+    fun should_ParseArgumentCorrectly_when_CodecAndStreamSpecifierAreNotBlank() {
         val codecArgument = CodecArgument("libcodec", "a")
+
         val codecArgumentParsed = codecArgument.parseToString()
 
-        assertThat(codecArgumentParsed).matches(codecArgumentPattern)
+        assertThat(codecArgumentParsed).matches("-c:a \"libcodec\"")
     }
 }

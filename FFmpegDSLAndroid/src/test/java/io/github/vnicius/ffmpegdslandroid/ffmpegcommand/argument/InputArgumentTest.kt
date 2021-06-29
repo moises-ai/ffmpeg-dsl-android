@@ -2,7 +2,6 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument
 
 import com.google.common.truth.Truth.assertThat
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.exception.PathIsBlankException
-import io.github.vnicius.ffmpegdslandroid.util.ArgumentPatternCreator
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -14,14 +13,14 @@ import org.junit.runners.JUnit4
  */
 @RunWith(JUnit4::class)
 class InputArgumentTest {
-    private val inputRegex = ArgumentPatternCreator.create("-i", "\".+\"")
 
     @Test
     fun should_MatchesTheInputPattern_when_ParseTheContentToString() {
         val inputArgument = InputArgument("a")
+
         val parsedArgument = inputArgument.parseToString()
 
-        assertThat(parsedArgument).matches(inputRegex)
+        assertThat(parsedArgument).matches("-i \"a\"")
     }
 
     @Test(expected = PathIsBlankException::class)
