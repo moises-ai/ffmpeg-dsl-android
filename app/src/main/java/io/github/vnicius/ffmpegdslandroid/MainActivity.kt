@@ -8,6 +8,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.ffmpegCommand
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.ChannelType
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer.minutes
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer.seconds
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.Duration
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             input {
                 seekStart = minutes(2)
                 path = "test.mp3"
+                inputTimeOffset = seconds(0.3102834467120186f)
             }
 
             input {
