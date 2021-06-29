@@ -4,7 +4,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitial
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Filter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.AudioMixFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.DropoutTransitionOption
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.Duration
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.Duration
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.DurationOption
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.InputsOption
 

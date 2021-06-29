@@ -1,4 +1,4 @@
-package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption
+package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration
 
 enum class Duration(val value: String) {
     First("first"),
