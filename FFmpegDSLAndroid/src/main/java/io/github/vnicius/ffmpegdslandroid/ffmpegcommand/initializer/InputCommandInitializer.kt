@@ -4,6 +4,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.InputArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.SeekStartArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.TimeArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.TimeDuration
 
 class InputCommandInitializer(private val destination: MutableList<CommandArgumentParser>) {
     var path: String = ""
@@ -11,30 +12,26 @@ class InputCommandInitializer(private val destination: MutableList<CommandArgume
             field = value
             addInputArgument(path)
         }
-    var seekStartSeconds: Float? = null
+    var seekStart: TimeDuration? = null
         set(value) {
             field = value
-            value?.let(::addSeekStartSecondArgument)
+            value?.let(::addSeekStartArgument)
         }
-    var timeSeconds: Float? = null
+    var time: TimeDuration? = null
         set(value) {
             field = value
-            value?.let(::addTimeSecondArgument)
+            value?.let(::addTimeArgument)
         }
 
     private fun addInputArgument(path: String) {
         destination.add(InputArgument(path))
     }
 
-    private fun addSeekStartSecondArgument(second: Float) {
-        destination.add(SeekStartArgument().apply {
-            setPosition(second)
-        })
+    private fun addSeekStartArgument(timeDuration: TimeDuration) {
+        destination.add(SeekStartArgument(timeDuration))
     }
 
-    private fun addTimeSecondArgument(second: Float) {
-        destination.add(TimeArgument().apply {
-            setPosition(second)
-        })
+    private fun addTimeArgument(timeDuration: TimeDuration) {
+        destination.add(TimeArgument(timeDuration))
     }
 }

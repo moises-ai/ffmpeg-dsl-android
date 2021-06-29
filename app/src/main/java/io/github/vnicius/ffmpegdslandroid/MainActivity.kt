@@ -6,8 +6,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.ffmpegCommand
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.Duration
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.ChannelType
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer.minutes
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.Duration
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +19,12 @@ class MainActivity : AppCompatActivity() {
             isOverrideAllowed = true
 
             input {
-                seekStartSeconds = 2f
+                seekStart = minutes(2)
                 path = "test.mp3"
             }
 
             input {
+                seekStart = minutes(2)
                 path = "test_2.mp3"
             }
 
@@ -45,9 +47,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }.also(filterGroups::add)
 
-                amix(filterGroups.mapNotNull { it.inputStreamSpecifier }, "a:3") {
+                amix(filterGroups.mapNotNull { it.outputStreamSpecifier }, "a:3") {
                     inputs = 2
-                    duration = Duration.Shortest
+                    duration = Duration.Longest
                     dropoutTransition = 2
                     volume = 2
                 }

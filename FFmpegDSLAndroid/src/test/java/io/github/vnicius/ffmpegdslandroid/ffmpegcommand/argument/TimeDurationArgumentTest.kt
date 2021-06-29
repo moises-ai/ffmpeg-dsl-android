@@ -9,12 +9,12 @@ import org.junit.Test
  * github: @vnicius
  * vinicius.matheus252@gmail.com
  */
-class TimePositionArgumentTest {
+class TimeDurationArgumentTest {
 
     @Test
     fun should_ReturnSameKey_when_ParseTheContentToString() {
         val key = "-x"
-        val timePositionArgument = TimePositionArgument(key)
+        val timePositionArgument = TimeDurationArgument(key)
         timePositionArgument.setPosition(0)
 
         val parsedArgument = timePositionArgument.parseToString()
@@ -27,7 +27,7 @@ class TimePositionArgumentTest {
         val key = "-x"
         val position = 2
         val timePositionArgumentPattern = ArgumentPatternCreator.create(key, position.toString())
-        val timePositionArgument = TimePositionArgument(key)
+        val timePositionArgument = TimeDurationArgument(key)
 
         timePositionArgument.setPosition(position)
 
@@ -41,7 +41,7 @@ class TimePositionArgumentTest {
         val key = "-x"
         val position = 3f
         val timePositionArgumentPattern = ArgumentPatternCreator.create(key, position.toString())
-        val timePositionArgument = TimePositionArgument(key)
+        val timePositionArgument = TimeDurationArgument(key)
 
         timePositionArgument.setPosition(position)
 
@@ -55,7 +55,7 @@ class TimePositionArgumentTest {
         val key = "-x"
         val position = 300L
         val timePositionArgumentPattern = ArgumentPatternCreator.create(key, "${position}ms")
-        val timePositionArgument = TimePositionArgument(key)
+        val timePositionArgument = TimeDurationArgument(key)
 
         timePositionArgument.setPosition(position)
 
