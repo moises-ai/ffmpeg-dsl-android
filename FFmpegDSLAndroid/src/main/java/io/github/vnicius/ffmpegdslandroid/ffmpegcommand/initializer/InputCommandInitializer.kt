@@ -18,7 +18,7 @@ class InputCommandInitializer(private val destination: MutableList<CommandArgume
             field = value
             value?.let(::addSeekStartArgument)
         }
-    var time: TimeDuration? = null
+    var duration: TimeDuration? = null
         set(value) {
             field = value
             value?.let(::addTimeArgument)
