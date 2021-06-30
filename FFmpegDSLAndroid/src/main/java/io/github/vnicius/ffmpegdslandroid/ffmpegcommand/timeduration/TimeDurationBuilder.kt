@@ -11,7 +11,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.timeduratio
  * vinicius.matheus252@gmail.com
  */
 class TimeDurationBuilder {
-    fun toSecond(second: Float): TimeDuration = SimpleTimeDuration(second, SecondTimeDurationUnit())
+    fun toSecond(second: Double): TimeDuration = SimpleTimeDuration(second, SecondTimeDurationUnit())
 
     fun toMillisecond(millisecond: Long): TimeDuration =
         SimpleTimeDuration(millisecond, MillisecondTimeDurationUnit())
@@ -19,6 +19,6 @@ class TimeDurationBuilder {
     fun toNanosecond(nanosecond: Long): TimeDuration =
         SimpleTimeDuration(nanosecond, NanosecondTimeDurationUnit())
 
-    fun toTimePosition(hour: Int, minute: Int, second: Float): TimeDuration =
+    fun toTimePosition(hour: Int, minute: Int, second: Double): TimeDuration =
         TimePosition(hour, minute, second)
 }

@@ -15,12 +15,12 @@ class InputTimeOffsetArgumentTest {
 
     @Test
     fun should_ParseArgumentCorrectly_when_TimeDurationIsInSeconds() {
-        val timedDurationSeconds = timeDurationBuilder.toSecond(2f)
+        val timedDurationSeconds = timeDurationBuilder.toSecond(2.0)
         val inputTimeOffsetArgument = InputTimeOffsetArgument(timedDurationSeconds)
 
         val parsedArgument = inputTimeOffsetArgument.parseToString()
 
-        assertThat(parsedArgument).matches("-itsoffset \"2\"")
+        assertThat(parsedArgument).matches("-itsoffset \"2.0\"")
     }
 
     @Test
@@ -45,7 +45,7 @@ class InputTimeOffsetArgumentTest {
 
     @Test
     fun should_ParseArgumentCorrectly_when_TimeDurationIsTimePositionOnlyWithSeconds() {
-        val timedDurationSeconds = timeDurationBuilder.toTimePosition(0, 0, 2.5f)
+        val timedDurationSeconds = timeDurationBuilder.toTimePosition(0, 0, 2.5)
         val inputTimeOffsetArgument = InputTimeOffsetArgument(timedDurationSeconds)
 
         val parsedArgument = inputTimeOffsetArgument.parseToString()
@@ -55,7 +55,7 @@ class InputTimeOffsetArgumentTest {
 
     @Test
     fun should_ParseArgumentCorrectly_when_TimeDurationIsTimePositionWithPositiveMinutes() {
-        val timedDurationSeconds = timeDurationBuilder.toTimePosition(0, 10, 10.55f)
+        val timedDurationSeconds = timeDurationBuilder.toTimePosition(0, 10, 10.55)
         val inputTimeOffsetArgument = InputTimeOffsetArgument(timedDurationSeconds)
 
         val parsedArgument = inputTimeOffsetArgument.parseToString()
@@ -65,7 +65,7 @@ class InputTimeOffsetArgumentTest {
 
     @Test
     fun should_ParseArgumentCorrectly_when_TimeDurationIsTimePositionWithNegativeMinutes() {
-        val timedDurationSeconds = timeDurationBuilder.toTimePosition(0, -9, 10.55f)
+        val timedDurationSeconds = timeDurationBuilder.toTimePosition(0, -9, 10.55)
         val inputTimeOffsetArgument = InputTimeOffsetArgument(timedDurationSeconds)
 
         val parsedArgument = inputTimeOffsetArgument.parseToString()
@@ -75,7 +75,7 @@ class InputTimeOffsetArgumentTest {
 
     @Test
     fun should_ParseArgumentCorrectly_when_TimeDurationIsTimePositionWithPositiveHours() {
-        val timedDurationSeconds = timeDurationBuilder.toTimePosition(10, 50, 10.55f)
+        val timedDurationSeconds = timeDurationBuilder.toTimePosition(10, 50, 10.55)
         val inputTimeOffsetArgument = InputTimeOffsetArgument(timedDurationSeconds)
 
         val parsedArgument = inputTimeOffsetArgument.parseToString()
@@ -85,7 +85,7 @@ class InputTimeOffsetArgumentTest {
 
     @Test
     fun should_ParseArgumentCorrectly_when_TimeDurationIsTimePositionWithNegativeHours() {
-        val timedDurationSeconds = timeDurationBuilder.toTimePosition(-10, 5, 0f)
+        val timedDurationSeconds = timeDurationBuilder.toTimePosition(-10, 5, 0.0)
         val inputTimeOffsetArgument = InputTimeOffsetArgument(timedDurationSeconds)
 
         val parsedArgument = inputTimeOffsetArgument.parseToString()

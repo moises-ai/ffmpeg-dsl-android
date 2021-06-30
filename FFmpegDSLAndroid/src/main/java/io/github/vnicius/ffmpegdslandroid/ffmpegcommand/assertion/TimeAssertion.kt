@@ -18,8 +18,8 @@ abstract class TimeAssertion<T> : Assertion<T> {
         }
     }
 
-    object SecondsAssertion: TimeAssertion<Float>() {
-        override fun assert(value: Float) {
+    object SecondsAssertion: TimeAssertion<Double>() {
+        override fun assert(value: Double) {
             if(value !in -60f..60f) {
                 throw InvalidTimeException(TimeUnit.SECONDS, value)
             }

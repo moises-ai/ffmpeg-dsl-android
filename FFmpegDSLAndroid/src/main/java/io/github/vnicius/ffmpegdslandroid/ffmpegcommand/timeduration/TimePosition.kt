@@ -16,11 +16,11 @@ class TimePosition private constructor(): TimeDuration {
 
     private var timeDurationString: String = ""
 
-    constructor(hour: Int = 0, minute: Int, second: Float) : this() {
+    constructor(hour: Int = 0, minute: Int, second: Double) : this() {
         timeDurationString = parseTime(hour, minute, second)
     }
 
-    private fun parseTime(hour: Int, minute: Int, second: Float): String {
+    private fun parseTime(hour: Int, minute: Int, second: Double): String {
         val timeStringBuilder = StringBuilder()
 
         appendHour(timeStringBuilder, hour)
@@ -46,7 +46,7 @@ class TimePosition private constructor(): TimeDuration {
         stringBuilder.append(minute.formatToTime()).append(":")
     }
 
-    private fun appendSecond(stringBuilder: StringBuilder, second: Float) {
+    private fun appendSecond(stringBuilder: StringBuilder, second: Double) {
         TimeAssertion.SecondsAssertion.assert(second)
 
         stringBuilder.append(second.compress().formatToTime())

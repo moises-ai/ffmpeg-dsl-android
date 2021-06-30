@@ -1,5 +1,7 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.extension
 
+import kotlin.math.abs
+
 
 /**
  * Created by Vinícius Veríssimo on 28/06/21.
@@ -9,20 +11,33 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.extension
 
 fun Number.compress(): Number {
     val intPart = this.toInt()
-
-    return if (this is Float && this - intPart == 0f) {
-        intPart
-    } else {
-        this
+    val compressedValue = when {
+        (this is Float && this - intPart == 0f) -> intPart
+        (this is Double && this - intPart == 0.0) -> intPart
+        else -> this
     }
+
+    return compressedValue
 }
 
 fun Number.formatToTime(): String {
-    val intValue = this.toInt()
+    val absLongValue = abs(this.toLong())
 
-    return if (intValue in -10..10) {
-        "0${this}"
-    } else {
-        this.toString()
+    if (absLongValue >= 10) {
+        return this.toString()
     }
+
+    val absValue = when(this) {
+        is Double -> abs(this)
+        is Float -> abs(this)
+        else -> absLongValue
+    }
+    val stringValue = "0$absValue"
+    val signal = if (this.toInt() < 0) {
+        "-"
+    } else {
+        ""
+    }
+
+    return signal + stringValue
 }
