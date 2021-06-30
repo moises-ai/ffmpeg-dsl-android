@@ -10,6 +10,6 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.TimeDuratio
  *
  * @see https://ffmpeg.org/ffmpeg.html#Main-options
  */
-class InputTimeOffset(override val timeDuration: TimeDuration) :
+class InputTimeOffsetArgument(override val timeDuration: TimeDuration) :
     TimeDurationArgument("-itsoffset") {
 }

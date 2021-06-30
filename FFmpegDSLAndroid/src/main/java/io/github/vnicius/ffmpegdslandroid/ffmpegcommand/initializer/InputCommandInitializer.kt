@@ -1,7 +1,7 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.InputArgument
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.InputTimeOffset
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.InputTimeOffsetArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.SeekStartArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.TimeArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
@@ -42,6 +42,6 @@ class InputCommandInitializer(private val destination: MutableList<CommandArgume
     }
 
     private fun addInputTimeOffsetArgument(timeDuration: TimeDuration) {
-        destination.add(InputTimeOffset(timeDuration))
+        destination.add(InputTimeOffsetArgument(timeDuration))
     }
 }
