@@ -1,7 +1,5 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.timedurationunit
 
-import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.extension.compress
-
 
 /**
  * Created by Vinícius Veríssimo on 28/06/21.
@@ -10,6 +8,6 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.extension.compress
  */
 class SecondTimeDurationUnit: TimeDurationUnit {
     override fun format(value: Number): String {
-        return value.compress().toString()
+        return value.toString()
     }
 }
