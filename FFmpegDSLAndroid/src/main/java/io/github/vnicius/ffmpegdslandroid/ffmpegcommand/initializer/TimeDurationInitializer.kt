@@ -23,10 +23,10 @@ fun minutes(minute: Int): TimeDuration =
     TimeDurationBuilder().toTimePosition(0, minute, 0.0)
 
 fun timePosition(second: Double): TimeDuration =
-    TimeDurationBuilder().toTimePosition(0, 0, second)
+    TimeDurationBuilder().toTimePosition(second)
 
 fun timePosition(minute: Int, second: Double): TimeDuration =
-    TimeDurationBuilder().toTimePosition(0, minute, second)
+    TimeDurationBuilder().toTimePosition(minute, second)
 
 fun timePosition(hour: Int, minute: Int, second: Double): TimeDuration =
     TimeDurationBuilder().toTimePosition(hour, minute, second)

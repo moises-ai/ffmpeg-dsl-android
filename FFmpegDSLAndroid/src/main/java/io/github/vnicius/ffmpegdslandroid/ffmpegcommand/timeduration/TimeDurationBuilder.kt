@@ -21,4 +21,10 @@ class TimeDurationBuilder {
 
     fun toTimePosition(hour: Int, minute: Int, second: Double): TimeDuration =
         TimePosition(hour, minute, second)
+
+    fun toTimePosition(minute: Int, second: Double): TimeDuration =
+        TimePosition(minute, second)
+
+    fun toTimePosition(second: Double): TimeDuration =
+        TimePosition(second)
 }
