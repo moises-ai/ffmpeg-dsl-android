@@ -1,5 +1,6 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter
 
-class AudioResampleFilter(sampleRate: Float) : SampleRateFilter(sampleRate) {
+class AudioResampleFilter(sampleRate: Number) : Filter() {
     override val key: String = "aresample"
+    override val value: String = sampleRate.toString()
 }

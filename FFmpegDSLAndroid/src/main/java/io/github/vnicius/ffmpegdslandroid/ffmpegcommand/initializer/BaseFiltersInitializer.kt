@@ -7,12 +7,12 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.PanFilt
 
 @FFmpegInitializerMarker
 abstract class BaseFiltersInitializer {
-    var audioSampleRate: Float? = null
+    var audioSampleRate: Number? = null
         set(value) {
             field = value
             value?.let(::addAudioSampleRateFilter)
         }
-    var audioResampleRate: Float? = null
+    var audioResampleRate: Number? = null
         set(value) {
             field = value
             value?.let(::addAudioResampleRateFilter)
@@ -29,11 +29,11 @@ abstract class BaseFiltersInitializer {
         }
 
 
-    private fun addAudioSampleRateFilter(sampleRate: Float) {
+    private fun addAudioSampleRateFilter(sampleRate: Number) {
         addFilter(AudioSampleRateFilter(sampleRate))
     }
 
-    private fun addAudioResampleRateFilter(resampleRate: Float) {
+    private fun addAudioResampleRateFilter(resampleRate: Number) {
         addFilter(AudioResampleFilter(resampleRate))
     }
 
