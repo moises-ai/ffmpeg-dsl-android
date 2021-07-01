@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             input {
                 seekStart = minutes(2)
                 path = "test.mp3"
-                inputTimeOffset = seconds(0.3102834467120186f)
+                inputTimeOffset = seconds(0.3102834467120186)
             }
 
             input {
