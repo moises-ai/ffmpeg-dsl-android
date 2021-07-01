@@ -17,7 +17,7 @@ abstract class BaseFiltersInitializer {
             field = value
             value?.let(::addAudioResampleRateFilter)
         }
-    var audioTempo: Float? = null
+    var audioTempo: Double? = null
         set(value) {
             field = value
             value?.let(::addAudioTempoFilter)
@@ -37,7 +37,7 @@ abstract class BaseFiltersInitializer {
         addFilter(AudioResampleFilter(resampleRate))
     }
 
-    private fun addAudioTempoFilter(tempo: Float) {
+    private fun addAudioTempoFilter(tempo: Double) {
         addFilter(AudioTempoFilter(tempo))
     }
 
