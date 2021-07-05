@@ -9,6 +9,8 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter.ChannelType
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer.minutes
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer.seconds
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamType
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.timeduration.Duration
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +35,10 @@ class MainActivity : AppCompatActivity() {
             filterComplex {
                 val filterGroups = mutableListOf<FilterGroup>()
 
-                filterGroup("0:a", "a:0") {
+                filterGroup(
+                    StreamSpecifier(0, StreamType.Audio),
+                    StreamSpecifier(StreamType.Audio, 0)
+                ) {
                     volume = 1.2f
                     pan {
                         channelType = ChannelType.Stereo
@@ -41,7 +46,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }.also(filterGroups::add)
 
-                filterGroup("1:a", "a:1") {
+                filterGroup(
+                    StreamSpecifier(1, StreamType.Audio),
+                    StreamSpecifier(StreamType.Audio, 1)
+                ) {
                     volume = 1.5f
                     pan {
                         channelType = ChannelType.Stereo
@@ -49,7 +57,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }.also(filterGroups::add)
 
-                amix(filterGroups.mapNotNull { it.outputStreamSpecifier }, "a:3") {
+                amix(
+                    filterGroups.mapNotNull { it.outputStreamSpecifier },
+                    StreamSpecifier(StreamType.Audio, 3)
+                ) {
                     inputs = 2
                     duration = Duration.Longest
                     dropoutTransition = 2
@@ -57,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            map = tag("a:3")
+            map = tag(StreamSpecifier(StreamType.Audio, 3))
 
             outputPath = "out.mp3"
         }

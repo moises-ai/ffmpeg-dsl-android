@@ -4,11 +4,12 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Filter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterTagGenerator
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.TaggedFilter
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.mixoption.MixOption
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 
 abstract class MixFilter(
     private val filterKey: String,
-    private val inputsStreamsSpecifiers: List<String>? = null,
-    outputStreamSpecifier: String? = null
+    private val inputsStreamsSpecifiers: List<StreamSpecifier>? = null,
+    outputStreamSpecifier: StreamSpecifier? = null
 ) : Filter(), TaggedFilter {
     override val key: String
         get() = generateKey()
@@ -31,10 +32,11 @@ abstract class MixFilter(
     }
 
     private fun generateInputSpecifier(): String {
-        val specifiers: List<String> =
-            inputsStreamsSpecifiers?.filter { it.isNotBlank() } ?: listOf()
-
-        return specifiers.joinToString("") { filterTagGenerator.generateTagFromStreamSpecifier(it) }
+        return inputsStreamsSpecifiers?.joinToString("") {
+            filterTagGenerator.generateTagFromStreamSpecifier(
+                it
+            )
+        } ?: ""
     }
 
     private fun generateKey(): String = "$inputTag$filterKey"

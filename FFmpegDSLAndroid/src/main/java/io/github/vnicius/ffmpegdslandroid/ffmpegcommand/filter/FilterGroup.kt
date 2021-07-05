@@ -1,10 +1,11 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentParser
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 
 class FilterGroup(
-    val inputStreamSpecifier: String? = null,
-    val outputStreamSpecifier: String? = null
+    val inputStreamSpecifier: StreamSpecifier? = null,
+    val outputStreamSpecifier: StreamSpecifier? = null
 ) :
     CommandArgumentParser, TaggedFilter {
     private val filters: MutableList<Filter> = mutableListOf()

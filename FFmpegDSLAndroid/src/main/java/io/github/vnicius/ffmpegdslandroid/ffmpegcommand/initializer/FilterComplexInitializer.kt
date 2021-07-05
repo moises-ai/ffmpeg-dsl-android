@@ -4,13 +4,14 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitial
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument.FilterComplexArgument
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterGroup
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter.AudioMixFilter
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 
 @FFmpegInitializerMarker
 class FilterComplexInitializer(private val filterComplexArgument: FilterComplexArgument) {
 
     fun filterGroup(
-        inputStreamSpecifier: String? = null,
-        outputStreamSpecifier: String? = null,
+        inputStreamSpecifier: StreamSpecifier? = null,
+        outputStreamSpecifier: StreamSpecifier? = null,
         initializer: FilterGroupInitializer.() -> Unit
     ): FilterGroup {
         val filterGroup = FilterGroup(inputStreamSpecifier, outputStreamSpecifier)
@@ -23,8 +24,8 @@ class FilterComplexInitializer(private val filterComplexArgument: FilterComplexA
     }
 
     fun amix(
-        inputsStreamsSpecifiers: List<String>? = null,
-        outputStreamSpecifier: String? = null,
+        inputsStreamsSpecifiers: List<StreamSpecifier>? = null,
+        outputStreamSpecifier: StreamSpecifier? = null,
         initializer: AudioMixInitializer.() -> Unit
     ): AudioMixFilter {
         val audioMixFilter = AudioMixFilter(inputsStreamsSpecifiers, outputStreamSpecifier)

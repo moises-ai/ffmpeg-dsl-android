@@ -1,7 +1,9 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.mixfilter
 
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
+
 class AudioMixFilter(
-    inputsStreamsSpecifiers: List<String>? = null,
-    outputStreamSpecifier: String? = null
+    inputsStreamsSpecifiers: List<StreamSpecifier>? = null,
+    outputStreamSpecifier: StreamSpecifier? = null
 ) : MixFilter("amix", inputsStreamsSpecifiers, outputStreamSpecifier) {
 }

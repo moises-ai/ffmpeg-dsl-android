@@ -7,6 +7,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandArgumentP
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.command.CommandBuilder
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.FilterTagGenerator
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.flag.OverrideAllowedFlag
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.value.OutputPathValue
 
 class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
@@ -69,6 +70,6 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
         return codecArgument
     }
 
-    fun tag(streamSpecifier: String): String =
+    fun tag(streamSpecifier: StreamSpecifier): String =
         FilterTagGenerator().generateTagFromStreamSpecifier(streamSpecifier)
 }
