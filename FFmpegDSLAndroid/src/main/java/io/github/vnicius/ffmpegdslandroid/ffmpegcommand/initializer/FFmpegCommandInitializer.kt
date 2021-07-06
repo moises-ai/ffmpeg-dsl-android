@@ -21,11 +21,6 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
             field = value
             value?.let(::addOutputPathValue)
         }
-    var map: String? = null
-        set(value) {
-            field = value
-            value?.let(::addMapArgument)
-        }
 
     private fun addIsOverrideAllowed(isAllowed: Boolean) {
         commandBuilder.addArgument(OverrideAllowedFlag(isAllowed))
@@ -35,7 +30,7 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
         commandBuilder.addArgument(OutputPathValue(path))
     }
 
-    private fun addMapArgument(streamSpecifier: String) {
+    private fun addMapArgument(streamSpecifier: StreamSpecifier) {
         commandBuilder.addArgument(MapArgument(streamSpecifier))
     }
 
@@ -72,4 +67,20 @@ class FFmpegCommandInitializer(private val commandBuilder: CommandBuilder) {
 
     fun tag(streamSpecifier: StreamSpecifier): String =
         FilterTagGenerator().generateTagFromStreamSpecifier(streamSpecifier)
+
+    fun map(streamSpecifier: StreamSpecifier): MapArgument {
+        val mapArgument = MapArgument(streamSpecifier)
+
+        commandBuilder.addArgument(mapArgument)
+
+        return mapArgument;
+    }
+
+    fun map(streamSpecifier: String): MapArgument {
+        val mapArgument = MapArgument(streamSpecifier)
+
+        commandBuilder.addArgument(mapArgument)
+
+        return mapArgument;
+    }
 }

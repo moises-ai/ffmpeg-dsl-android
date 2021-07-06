@@ -1,6 +1,7 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.initializer
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitializerMarker
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 
 
 /**
@@ -10,6 +11,6 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.annotation.FFmpegInitial
  */
 @FFmpegInitializerMarker
 class CodecInitializer {
-    var streamSpecifier: String? = null
+    var streamSpecifier: StreamSpecifier? = null
     var codec: String = ""
 }

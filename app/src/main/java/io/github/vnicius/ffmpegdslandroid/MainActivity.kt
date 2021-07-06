@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            map = tag(StreamSpecifier(StreamType.Audio, 3))
+            map(tag(StreamSpecifier(StreamType.Audio, 3)))
 
             outputPath = "out.mp3"
         }

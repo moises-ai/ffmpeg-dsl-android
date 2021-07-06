@@ -1,6 +1,7 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.assertion.CodecAssertion
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 
 
 /**
@@ -8,7 +9,7 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.assertion.CodecAssertion
  * github: @vnicius
  * vinicius.matheus252@gmail.com
  */
-class CodecArgument(codec: String, private val streamSpecifier: String? = null): Argument() {
+class CodecArgument(codec: String, private val streamSpecifier: StreamSpecifier? = null): Argument() {
     override val key: String
         get() = generateKey()
     override val value: String = codec
@@ -18,11 +19,9 @@ class CodecArgument(codec: String, private val streamSpecifier: String? = null):
     }
 
     private fun generateKey(): String {
-        val specifier = if (streamSpecifier?.isNotBlank() == true) {
-            ":${streamSpecifier.trim()}"
-        } else {
-            ""
-        }
+        val specifier = streamSpecifier?.parseToString()?.let {
+            ":$it"
+        } ?: ""
 
         return BASE_KEY + specifier
     }

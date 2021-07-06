@@ -1,6 +1,7 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.argument
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.assertion.StreamSpecifierAssertion
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.streamspecifier.StreamSpecifier
 
 
 /**
@@ -8,11 +9,20 @@ import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.assertion.StreamSpecifie
  * github: @vnicius
  * vinicius.matheus252@gmail.com
  */
-class MapArgument(streamSpecifier: String): Argument() {
+class MapArgument private constructor(): Argument() {
     override val key: String = "-map"
-    override val value: String = streamSpecifier
+    override val value: String
+        get() = valueString
 
-    init {
-        StreamSpecifierAssertion.assert(streamSpecifier)
+    private var valueString: String = ""
+
+    constructor(streamSpecifier: StreamSpecifier): this() {
+        valueString = streamSpecifier.parseToString()
+    }
+
+    constructor(specifier: String): this() {
+        StreamSpecifierAssertion.assert(specifier)
+
+        valueString = specifier
     }
 }
