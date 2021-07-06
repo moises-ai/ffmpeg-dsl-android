@@ -2,7 +2,7 @@ package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter
 
 import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.Filter
 
-open class PanFilter(private val channelType: ChannelType) : Filter() {
+abstract class PanFilter(private val channelType: ChannelType) : Filter() {
     override val key: String = "pan"
     override val value: String
         get() = getChannelsAsString()
