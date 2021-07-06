@@ -1,7 +1,10 @@
 package io.github.vnicius.ffmpegdslandroid.ffmpegcommand.filter.panfilter
 
+import io.github.vnicius.ffmpegdslandroid.ffmpegcommand.assertion.GainAssertion
+
 class StereoPanFilter(gains: FloatArray) : PanFilter(ChannelType.Stereo) {
     init {
+        GainAssertion.assert(gains)
         setupChannelsGain(gains)
     }
 
