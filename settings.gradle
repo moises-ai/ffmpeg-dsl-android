@@ -1,3 +1,3 @@
 rootProject.name = "FFmpegDSLAndroidExample"
 include ':app'
-include ':FFmpegDSLAndroid'
+include ':ffmpeg-dsl'

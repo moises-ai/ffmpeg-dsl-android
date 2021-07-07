@@ -1,4 +1,4 @@
-package ai.moises.ffmpegdslandroid
+package ai.moises.ffmpegdslandroidexample
 
 import android.os.Bundle
 import android.util.Log
